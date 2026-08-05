@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+const thoughts = [
+  ["Ce n’est pas parce que le ciel est vaste qu’il faut y perdre son chemin.", "pour respirer", "douceur", "pearl", true],
+  ["On peut changer d’avis sans perdre sa direction.", "pour bifurquer", "élan", "sky", false],
+  ["Les idées les plus libres arrivent souvent quand on n’essaie plus de les attraper.", "pour laisser venir", "rêverie", "mist", false],
+  ["Faire léger n’est pas faire petit.", "pour aujourd’hui", "élan", "blue", false],
+];
+---
+<Base>
+  <main>
+    <header class="site-header"><a class="wordmark" href="#haut">Parceque</a><a class="small-button" href="#pensees">Les pensées <span>↓</span></a></header>
+    <section class="hero" id="haut"><p class="eyebrow">un carnet en mouvement</p><h1>Parce que<br /><em>tout mérite une pensée.</em></h1><p class="intro">Des éclats à garder, à partager ou à laisser passer.</p><a class="scroll-cue" href="#pensee">Descendre doucement <span>↓</span></a><div class="orb orb-one"></div><div class="orb orb-two"></div></section>
+    <section class="thought-of-day" id="pensee"><p class="eyebrow">la pensée du moment</p><p class="thought-index">01 — 04</p><blockquote class="featured-thought"><span>“</span>{thoughts[0][0]}<span>”</span></blockquote><p class="thought-note">{thoughts[0][1]}</p><a class="article-link" href="/pensees/ciel-vaste/">Entrer dans la pensée <span>↗</span></a></section>
+    <section class="collection" id="pensees"><div class="section-heading"><div><p class="eyebrow">à ouvrir quand on veut</p><h2>Des pensées<br />en liberté.</h2></div><p>Ni journal, ni mode d’emploi.<br />Juste quelques détours.</p></div><div class="thought-grid">{thoughts.map(([text, label, mood, tint, hasArticle], index) => <article class={`thought-card ${tint}`}><p>Parce que…</p><h3>{text}</h3><footer><span>{mood}</span><span>0{index + 1}</span></footer>{hasArticle && <a class="card-link" href="/pensees/ciel-vaste/">lire l’article ↗</a>}</article>)}</div></section>
+    <section class="manifesto"><p class="eyebrow">un peu de place</p><p>Pour les questions sans réponse,<br />les jours de travers, les idées qui<br /><em>n’ont pas demandé à venir.</em></p></section>
+    <footer class="site-footer"><span>© Parceque</span><span>Un carnet ouvert, 2026</span><a href="#haut">Revenir là-haut ↑</a></footer>
+  </main>
+</Base>
